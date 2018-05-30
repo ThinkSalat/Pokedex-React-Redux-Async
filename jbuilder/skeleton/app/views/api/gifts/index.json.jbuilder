@@ -1,1 +1,3 @@
-json.array! @gifts, :title, :description
+json.array! @gifts.each do |gift|
+  json.partial! 'api/gifts/gift', gift: gift
+end
