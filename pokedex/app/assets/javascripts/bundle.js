@@ -108,6 +108,44 @@ var receiveAllPokemon = exports.receiveAllPokemon = function receiveAllPokemon(p
   };
 };
 
+var requestAllPokemon = exports.requestAllPokemon = function requestAllPokemon() {
+  return function (dispatch) {
+    return APIUtil.fetchAllPokemon().then(function (pokemon) {
+      return dispatch(receiveAllPokemon(pokemon));
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/middleware/thunk.js":
+/*!**************************************!*\
+  !*** ./frontend/middleware/thunk.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var thunk = function thunk(_ref) {
+  var dispatch = _ref.dispatch,
+      getState = _ref.getState;
+  return function (next) {
+    return function (action) {
+      if (typeof action === 'function') {
+        return action(dispatch, getState);
+      }
+      return next(action);
+    };
+  };
+};
+
+exports.default = thunk;
+
 /***/ }),
 
 /***/ "./frontend/pokedex.jsx":
@@ -267,10 +305,14 @@ var _root_reducer2 = _interopRequireDefault(_root_reducer);
 
 var _reduxLogger = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
 
+var _thunk = __webpack_require__(/*! ../middleware/thunk */ "./frontend/middleware/thunk.js");
+
+var _thunk2 = _interopRequireDefault(_thunk);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var configureStore = function configureStore() {
-  return (0, _redux.createStore)(_root_reducer2.default, (0, _redux.applyMiddleware)(_reduxLogger.logger));
+  return (0, _redux.createStore)(_root_reducer2.default, (0, _redux.applyMiddleware)(_thunk2.default, _reduxLogger.logger));
 };
 exports.default = configureStore;
 
