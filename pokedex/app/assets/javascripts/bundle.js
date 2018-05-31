@@ -268,11 +268,12 @@ var PokemonIndexItem = function PokemonIndexItem(_ref) {
     { direction: dir },
     _react2.default.createElement(
       'li',
-      null,
+      { className: 'pokemon-index-item' },
       _react2.default.createElement('img', { className: 'pokemon-thumbnail', src: poke.image_url }),
       _react2.default.createElement(
         'h1',
         null,
+        ' ',
         poke.name,
         ' '
       )

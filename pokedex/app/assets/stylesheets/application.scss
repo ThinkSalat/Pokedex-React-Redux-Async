@@ -104,9 +104,13 @@
    color: $black;
  }
 
+.pokemon-index-item {
+  list-style-type: none;
+}
+
  .pokemon-thumbnail {
    background-color: pink;
-   height: 50px;
-   width: 50px;
+   height: 100px;
+   width: 100px;
    border-radius: 50%;
  }
