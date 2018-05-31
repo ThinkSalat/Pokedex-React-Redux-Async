@@ -1,12 +1,12 @@
 import { RECEIVE_POKEMON } from '../actions/pokemon_actions';
 
-const itemReducer = (state = {}, action) => {
+const itemsReducer = (state = {}, action) => {
   switch(action.type) {
   case (RECEIVE_POKEMON):
-  return  state;//return pokemon items
+    return  action.payload.items;//return pokemon items
   default:
     return state;
   }
 };
 
-export default itemReducer;
+export default itemsReducer;

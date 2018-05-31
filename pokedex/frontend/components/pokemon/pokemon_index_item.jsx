@@ -6,7 +6,7 @@ const PokemonIndexItem = ({poke}) => {
   return( <marquee direction={dir}>
       <li className='pokemon-index-item'>
         <img className='pokemon-thumbnail' src={poke.image_url}></img>
-        <Link to={`/pokemon/${poke.id}`}>{poke.name}</Link>
+        <Link to={`/pokemon/${poke.id}`} replace >{poke.name}</Link>
       </li>
     </marquee>);
 }

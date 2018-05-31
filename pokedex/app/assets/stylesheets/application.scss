@@ -106,12 +106,13 @@
 
 .pokemon-index-item {
   list-style-type: none;
+  background-color: pink;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
 
  .pokemon-thumbnail {
-   background-color: pink;
    height: 100px;
    width: 100px;
-   border-radius: 50%;
-   overflow: visible;
  }
