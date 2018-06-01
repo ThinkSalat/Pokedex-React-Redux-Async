@@ -14,3 +14,7 @@ export const selectItems = (state) => {
     return state.entities.items[id];
   });
 };
+
+export const selectItem = (state,id) => {
+  return state.entities.items[id];
+};

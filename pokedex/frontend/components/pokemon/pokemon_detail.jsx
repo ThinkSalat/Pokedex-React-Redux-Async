@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
+import PokemonItem from './pokemon_item';
+import ItemDetailContainer from './item_detail_container';
 
 export default class PokemonDetail extends React.Component {
   componentDidMount() {
@@ -16,28 +18,20 @@ export default class PokemonDetail extends React.Component {
     if (!this.props.pokemon) return null;
     if (!this.props.pokemon.moves) return null;
     if (!this.props.items) return null;
-    
+
     const items = this.props.items;
     const pokemon = this.props.pokemon;
-    const itemRenders = items.map(item=>{
-      return(
-        <li>
-          <ul>
-            <li>{item.name}</li>
-            <li>Happiness: {item.happiness}</li>
-            <li>Price: {item.price}</li>
-        </ul>
-      </li>
-      );
+    const itemRenders = items.map((item,i)=> <PokemonItem key={i} item={item}/>);
+    const moves = pokemon.moves.map((move,i)=> {
+      return <li key={i}><strong>{move}</strong></li>;
     });
-    const moves = pokemon.moves.map(move=> {
-      return <li key={move}>{move}</li>;
-    });
+
     return(
       <div className='pokemon-detail'>
         <Link to="/" replace >Back to All Pokemon </Link>
         <h1>{pokemon.name}</h1>
         <img  src={pokemon.image_url}></img>
+
         <ul>
           <li><h4> {pokemon.poke_type} type pokemon!</h4></li>
           <li>Attack: {pokemon.attack}</li>
@@ -48,9 +42,11 @@ export default class PokemonDetail extends React.Component {
             </ul>
           </li>
           <li>Items:
-            <ul>
+            <ul className='items-container'>
               {itemRenders}
+
             </ul>
+            <Route path={`/pokemon/${pokemon.id}/item/:item_id`} component={ItemDetailContainer} />
           </li>
         </ul>
       </div>

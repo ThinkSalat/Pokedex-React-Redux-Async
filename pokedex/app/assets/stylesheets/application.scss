@@ -112,7 +112,37 @@
   border-radius: 50%;
 }
 
+.pokemon-detail {
+  margin: auto;
+  width: 790px;
+
+}
+
  .pokemon-thumbnail {
    height: 100px;
    width: 100px;
+   display: block;
+ }
+
+ .items-container {
+   display: flex;
+   flex-direction: row;
+   // justify-content: space-around;
+   align-items: left;
+ }
+
+ .item-img {
+   height: 100px;
+   width: 100px;
+ }
+
+ .item-list-item {
+   list-style-type: none;
+   margin: auto;
+ }
+
+ .pokelist {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
  }

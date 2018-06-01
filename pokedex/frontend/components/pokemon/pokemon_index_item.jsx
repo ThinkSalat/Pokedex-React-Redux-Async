@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 
 const PokemonIndexItem = ({poke}) => {
   let dir = (poke.id % 2 === 0) ? 'left' : 'right';
-  return( <marquee direction={dir}>
+  return(
       <li className='pokemon-index-item'>
-        <img className='pokemon-thumbnail' src={poke.image_url}></img>
-        <Link to={`/pokemon/${poke.id}`} replace >{poke.name}</Link>
+        <Link to={`/pokemon/${poke.id}`} replace >
+           <img className='pokemon-thumbnail' src={poke.image_url}></img>
+        </Link>
       </li>
-    </marquee>);
+    );
 }
 
 export default PokemonIndexItem;

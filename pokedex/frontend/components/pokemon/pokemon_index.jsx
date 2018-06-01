@@ -12,7 +12,7 @@ class PokemonIndex extends React.Component {
     });
 
     return(
-      <ul>
+      <ul className='pokelist'>
         {pokes}
       </ul>
     );
